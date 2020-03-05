@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Pricing example · Bootstrap</title>
+    <title>Subscription Service @yield('title')</title>
 
     
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/pricing/">
@@ -42,3 +42,10 @@
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
   </head>
+
+  @include('partials.nav')
+
+  @yield('main-content')
+
+  @include('partials.footer')
+</html>
