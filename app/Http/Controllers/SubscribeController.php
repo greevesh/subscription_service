@@ -32,9 +32,15 @@ class SubscribeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function subscribe(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $user->newSubscription('subscription', $request->plan)->create($paymentMethod); 
+
+        redirect()
+        ->route('confirmation')
+        ->with('subscriptionSuccessMessage', 'You have successfully subscribed. See you around!');
     }
 
     /**

@@ -8,7 +8,7 @@
         <div class="card-group">
             <div class="card m-5">
             <div class="card-body">
-                <h1 class="card-title pricing-card-title">£0 <small class="text-muted">/ mo</small></h1>
+                <h1 class="card-title pricing-card-title">Free <small class="text-muted">/ mo</small></h1>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             </div>
