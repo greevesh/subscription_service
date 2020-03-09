@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscribeController extends Controller
 {
@@ -26,6 +27,15 @@ class SubscribeController extends Controller
         //
     }
 
+    public function storePaymentMethod()
+    {
+        $user = Auth::user();
+
+        return view('subscribe', [
+            'intent' => $user->createSetupIntent()
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,7 +46,11 @@ class SubscribeController extends Controller
     {
         $user = Auth::user();
 
-        $user->newSubscription('subscription', $request->plan)->create($paymentMethod); 
+        if (!$user->subscribed())
+        {
+            // 'create' method will automatically store customers payment method
+            $user->newSubscription('subscription', $request->plan)->create($paymentMethod); 
+        }
 
         redirect()
         ->route('confirmation')

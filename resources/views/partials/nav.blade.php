@@ -6,6 +6,9 @@
       <a class="p-2 text-dark" href="#">Support</a>
       <a class="p-2 text-dark" href="#">Pricing</a>
     </nav>
-    <a class="btn btn-outline-primary m-2" href="{{ route('login') }}">Login</a>
-    <a class="btn btn-outline-primary" href="{{ route('register') }}">Register</a>
+
+    @if(!Auth::user())
+      <a class="btn btn-outline-primary m-2" href="{{ route('login') }}">Login</a>
+      <a class="btn btn-outline-primary" href="{{ route('register') }}">Register</a>
+    @endif
 </div>
