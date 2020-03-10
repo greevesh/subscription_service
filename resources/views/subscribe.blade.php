@@ -3,7 +3,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 @section('main-content')
-    <form action="" method="post" id="subscribe-form">
+    {{-- <form action="{{ route('subscribed') }}" method="post" id="subscribe-form"> --}}
         @csrf 
         <div class="card-group">
             <div class="card m-5">
@@ -42,15 +42,39 @@
         <br><br>
 
     <button type="submit" id="subscribe-btn">Subscribe and Register</button>
-  </form>
+  {{-- </form> --}}
 
   <script>
-    const stripe = Stripe("{{ config('services.stripe.public') }}");
+      window.addEventListener('load', function() 
+      {
+        const stripe = Stripe("{{ config('services.stripe.public') }}");
 
-    const elements = stripe.elements();
-    const cardElement = elements.create('card');
+        const elements = stripe.elements();
+        const cardElement = elements.create('card');
 
-    cardElement.mount('#card-element');
+        cardElement.mount('#card-element');
+
+        const cardHolderName = document.getElementById('card-holder-name');
+        const cardButton = document.getElementById('card-button');
+        const clientSecret = cardButton.dataset.secret;
+
+        cardButton.addEventListener('click', async (e) => {
+            const { setupIntent, error } = await stripe.confirmCardSetup(
+                clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: { name: cardHolderName.value }
+                    }
+                }
+            );
+
+            if (error) {
+                console.log('error', error.message);
+            } else {
+                console.log('success', setupIntent.payment_method); 
+            }
+        });
+        });
   </script>
 
    {{-- <script>
