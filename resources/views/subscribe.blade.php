@@ -3,7 +3,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 @section('main-content')
-    {{-- <form action="{{ route('subscribed') }}" method="post"> --}}
+    <form action="{{ route('subscribed') }}" method="post">
         @csrf 
         <div class="card-group">
             <div class="card m-5">
@@ -42,7 +42,7 @@
         <br><br>
 
     <button type="submit" id="subscribe-btn">Subscribe and Register</button>
-  {{-- </form> --}}
+  </form>
 
   <script>
       window.addEventListener('load', function() 

@@ -6,19 +6,13 @@
     background-size: cover;
     height: 100vh;
   }
-  #pricing {
-    color: white;
-  }
-  p {
-    color: white;
-  }
 </style>
 
 @section('main-content')
   <div class="main">
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 id="pricing" class="display-4">Pricing</h1>
-      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 style="color: white;" class="display-4">Ladder Learning</h1>
+      <p style="color: white;" class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
     </div>
 
     <div class="container">
@@ -65,7 +59,7 @@
               <li>Phone and email support</li>
               <li>Help center access</li>
             </ul>
-            <a href="{{ route('subscribe') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Subscribe</button></a>
+          <a href="{{ Auth::User() ? route('subscribe') : route('login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Subscribe</button></a>
           </div>
         </div>
       </div>
