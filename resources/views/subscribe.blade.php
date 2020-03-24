@@ -3,7 +3,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 @section('main-content')
-    {{-- <form action="{{ route('subscribed') }}" method="post" id="subscribe-form"> --}}
+    {{-- <form action="{{ route('subscribed') }}" method="post"> --}}
         @csrf 
         <div class="card-group">
             <div class="card m-5">
